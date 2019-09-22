@@ -59,7 +59,7 @@ class Chat(models.Model):
 
 
 class ChatMessage(models.Model):
-    chat = models.ForeignKey(Chat, related_name='messages')
+    chat = models.ForeignKey(Chat, related_name='messages', on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=True)
     agent = models.ForeignKey(User, blank=True, null=True)
     message = models.TextField()
