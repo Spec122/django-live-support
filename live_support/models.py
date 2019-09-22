@@ -38,7 +38,7 @@ class Chat(models.Model):
     agents = models.ManyToManyField(User, blank=True, related_name='chats')
     objects = models.Manager()
     active = ChatManager()
-    support_group = models.ForeignKey(SupportGroup, null=True, blank=True)
+    support_group = models.ForeignKey(SupportGroup, null=True, blank=True, on_delete=models.CASCADE)
 
     def __unicode__(self):
         return '%s: %s' % (self.started, self.name)
