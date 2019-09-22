@@ -9,10 +9,10 @@ from django.core.cache import cache
 class SupportGroup(models.Model):
     name = models.CharField(_("name"), max_length=255)
     agents = models.ManyToManyField(
-        User, blank=True, related_name='agent_support_groups'
+        User, blank=True, related_name='agent_support_groups', on_delete=models.CASCADE
     )
     supervisors = models.ManyToManyField(
-        User, blank=True, related_name='supervisor_support_groups'
+        User, blank=True, related_name='supervisor_support_groups', on_delete=models.CASCADE
     )
 
     def __unicode__(self):
@@ -61,7 +61,7 @@ class Chat(models.Model):
 class ChatMessage(models.Model):
     chat = models.ForeignKey(Chat, related_name='messages', on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=True)
-    agent = models.ForeignKey(User, blank=True, null=True)
+    agent = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     message = models.TextField()
     sent = models.DateTimeField(auto_now_add=True)
 
