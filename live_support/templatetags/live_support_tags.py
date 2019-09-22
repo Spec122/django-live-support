@@ -2,7 +2,7 @@ from django import template
 from django.conf import settings
 from django.core.cache import cache
 from datetime import timedelta, datetime
-from django.core.urlresolvers import reverse
+from django.core.url import reverse
 
 from live_support.models import Chat
 
